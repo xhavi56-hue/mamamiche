@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mamamiche | Micheladas y coctelería</title>
+  <meta name="description" content="Mamamiche: micheladas, preparados y bebidas de todo tipo en un lugar acogedor con ambiente familiar. Enrique Cordero 162, Blvd. Clavijero. Pedidos al 221 233 6465.">
+  <meta name="theme-color" content="#A50C16">
+
+  <!-- Ícono de la pestaña del navegador -->
+  <link rel="icon" href="img/logo-gata.png">
+
+  <!-- Tipografías de Google Fonts: Bowlby One (títulos) y Figtree (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos de la página -->
+  <link rel="stylesheet" href="style.css">
+
+  <!--
+    Esta línea marca la página con la clase "js" solo si JavaScript funciona.
+    Así las animaciones de aparecer al hacer scroll nunca dejan contenido oculto
+    si el script no carga.
+  -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+  <!-- Papel picado decorativo (se mueve suave; los colores están en style.css) -->
+  <div class="papel" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+    <a class="marca" href="#inicio">MAMAMICHE</a>
+    <nav class="menu-nav" aria-label="Navegación principal">
+      <a href="#menu">Menú</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#visitanos">Visítanos</a>
+      <a class="boton boton-lima boton-chico" href="https://wa.me/522212336465" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+
+    <!-- PORTADA -->
+    <section class="portada">
+      <div class="portada-texto">
+        <p class="etiqueta">Micheladas y coctelería</p>
+        <h1 class="titulo-grande">Micheladas con <span class="resalte">carácter</span></h1>
+        <p class="portada-descripcion">Bebidas preparadas tipo coctelería, en un lugar acogedor con buena iluminación y ambiente familiar. Micheladas, preparados y bebidas de todo tipo.</p>
+        <div class="botones">
+          <a class="boton boton-lima" href="https://wa.me/522212336465" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          <a class="boton boton-borde" href="#menu">Ver el menú</a>
+        </div>
+        <p class="portada-datos">Enrique Cordero 162, Blvd. Clavijero<br>221 233 6465</p>
+      </div>
+
+      <div class="portada-logo">
+        <div class="logo-circulo">
+          <img class="logo-gata" src="img/logo-gata.png" width="668" height="693" alt="Logo de Mamamiche: una gata con gorra sosteniendo una michelada">
+        </div>
+      </div>
+    </section>
+
+    <!-- BANDA VERDE -->
+    <div class="banda">
+      <span>Ambiente familiar</span><span aria-hidden="true">•</span><span>Espacio acogedor</span><span aria-hidden="true">•</span><span>Bebidas de todo tipo</span>
+    </div>
+
+    <!-- MENÚ -->
+    <section class="menu" id="menu">
+      <div class="cabecera-seccion">
+        <p class="etiqueta etiqueta-salmon">Menú</p>
+        <h2 class="titulo-seccion">Nuestras bebidas</h2>
+      </div>
+
+      <!--
+        Cada bebida es un bloque <article class="tarjeta revelar">.
+        Para cambiar un nombre, precio o descripción solo edita el texto.
+      -->
+      <div class="rejilla">
+
+        <article class="tarjeta revelar">
+          <div class="foto">
+            <img src="img/azul-gomitas.jpg" alt="Bebida azul con gomitas, fresa y kiwi" loading="lazy">
+            <span class="precio">$120</span>
+          </div>
+          <h3>Azulito</h3>
+          <p>Bebida azul con borde de azúcar, fresa, kiwi y brocheta de gomitas.</p>
+        </article>
+
+        <article class="tarjeta revelar">
+          <div class="foto">
+            <img src="img/fresa-menta.jpg" alt="Bebida de fresa con hierbabuena y limón" loading="lazy">
+            <span class="precio">$120</span>
+          </div>
+          <h3>Mojito</h3>
+          <p>Fresa machacada con hierbabuena, limón y borde de azúcar rosa.</p>
+        </article>
+
+        <article class="tarjeta revelar">
+          <div class="foto">
+            <img src="img/michelada-camaron.jpg" alt="Michelada oscura con camarones, pepino y botana" loading="lazy">
+            <span class="precio">$85</span>
+          </div>
+          <h3>Michelada con camarones</h3>
+          <p>Michelada oscura cargada con camarones, pepino, chile y botana.</p>
+        </article>
+
+        <article class="tarjeta revelar">
+          <div class="foto">
+            <img src="img/michelada-pepino.jpg" alt="Michelada con borde enchilado y pepino" loading="lazy">
+            <span class="precio">$85</span>
+          </div>
+          <h3>Michelada de pepino</h3>
+          <p>Michelada clásica con borde enchilado y pepino con chile.</p>
+        </article>
+
+        <article class="tarjeta revelar">
+          <div class="foto">
+            <img src="img/jarro-citricos.jpg" alt="Jarro de barro con naranja, toronja y limón" loading="lazy">
+            <span class="precio">$120</span>
+          </div>
+          <h3>Cantarito</h3>
+          <p>Servido en jarro de barro con naranja, toronja, limón y borde de chile.</p>
+        </article>
+
+        <article class="tarjeta revelar">
+          <div class="foto">
+            <img src="img/chamoy-naranja.jpg" alt="Bebida espumosa con rodaja de naranja y borde de chile" loading="lazy">
+            <span class="precio">$120</span>
+          </div>
+          <h3>Naranja enchilada</h3>
+          <p>Preparado espumoso con rodaja de naranja y borde de chile.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="nosotros" id="nosotros">
+      <div class="nosotros-foto revelar">
+        <img src="img/fresa-azul.jpg" alt="Dos bebidas preparadas sobre la barra, con botanas" loading="lazy">
+      </div>
+      <div class="nosotros-texto revelar">
+        <p class="etiqueta etiqueta-roja">Nosotros</p>
+        <h2 class="titulo-seccion">Un lugar para quedarse a platicar</h2>
+        <p>Mamamiche es un bar de bebidas preparadas tipo coctelería con ambiente familiar. Es un espacio acogedor, con buena iluminación, mesas de madera, papel picado y bebidas de todo tipo.</p>
+        <p>Ven con tu familia o con tus amigos y pide la tuya con el borde que más te guste: chile, azúcar de colores o los dos.</p>
+      </div>
+    </section>
+
+    <!-- VISÍTANOS -->
+    <section class="visitanos" id="visitanos">
+      <div class="visitanos-info revelar">
+        <h2 class="titulo-seccion">Ven por la tuya</h2>
+        <dl>
+          <div>
+            <dt>Dirección</dt>
+            <dd><a href="https://share.google/NNK5jwS8KkDGP31aW" target="_blank" rel="noopener">Enrique Cordero 162, Blvd. Clavijero</a></dd>
+          </div>
+          <div>
+            <dt>Horario</dt>
+            <dd>Viernes a domingo de 3 pm a 12 am</dd>
+          </div>
+          <div>
+            <dt>Pedidos y contacto</dt>
+            <dd>221 233 6465 · Miriam Olivan</dd>
+          </div>
+        </dl>
+        <div class="botones">
+          <a class="boton boton-lima" href="https://wa.me/522212336465" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          <a class="boton boton-borde" href="https://share.google/NNK5jwS8KkDGP31aW" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+
+      <!-- Captura del mapa: para cambiarla, reemplaza el archivo img/mapa.png -->
+      <a class="mapa revelar" href="https://share.google/NNK5jwS8KkDGP31aW" target="_blank" rel="noopener">
+        <img src="img/mapa.png" width="285" height="132" alt="Mapa con la ubicación del local, junto a las calles Hernán Cortés y Enrique Cordero" loading="lazy">
+        <span>Abrir en Google Maps</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+    <div>
+      <p class="pie-marca">MAMAMICHE</p>
+      <p>Enrique Cordero 162, Blvd. Clavijero</p>
+    </div>
+    <p class="pie-aviso">Venta de bebidas alcohólicas solo a mayores de 18 años. Consume con responsabilidad.<br>© 2026 Mamamiche</p>
+  </footer>
+
+  <!-- Barra fija para pedir por WhatsApp (solo se ve en celular) -->
+  <div class="barra-pedido">
+    <a class="boton boton-lima" href="https://wa.me/522212336465" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

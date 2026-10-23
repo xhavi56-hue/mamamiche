@@ -1,0 +1,555 @@
+/* =========================================================
+   MAMAMICHE | Estilos
+   Orden del archivo:
+   1. Variables y base
+   2. Botones
+   3. Papel picado y encabezado
+   4. Portada y banda
+   5. Menú
+   6. Nosotros
+   7. Visítanos y pie de página
+   8. Celular
+   9. Movimiento reducido
+   ========================================================= */
+
+/* ---------- 1. Variables y base ---------- */
+:root {
+  /* Colores tomados del logo */
+  --rojo: #A50C16;
+  --rojo-profundo: #2A0709;
+  --verde-azulado: #1D6B76;
+  --tinta: #0E2A30;
+  --limon: #A6D63B;
+  --salmon: #F28B7B;
+  --rosa-claro: #FCE5DF;
+  --rosa-texto: #FFC9BE;
+  --texto-oscuro: #1B0E0E;
+
+  /* Tipografías */
+  --fuente-titulo: 'Bowlby One', system-ui, sans-serif;
+  --fuente-texto: 'Figtree', system-ui, sans-serif;
+
+  /* Espacio a los lados: crece con la pantalla pero se detiene en 64px */
+  --margen: clamp(16px, 5vw, 64px);
+  /* Igual que --margen, pero además centra el contenido en pantallas muy anchas */
+  --lado: max(var(--margen), calc((100% - 1312px) / 2));
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  line-height: 1.5;
+  color: #F7EFE6;
+  background: var(--rojo);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Contorno visible al navegar con teclado */
+:focus-visible {
+  outline: 3px solid var(--limon);
+  outline-offset: 3px;
+}
+
+/* Elementos que comparten estilo en varias secciones */
+.etiqueta {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rosa-texto);
+}
+.etiqueta-salmon { color: var(--salmon); }
+.etiqueta-roja { color: var(--rojo); }
+
+.titulo-seccion {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+/* ---------- 2. Botones ---------- */
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.boton {
+  display: inline-block;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.boton:hover  { transform: translateY(-2px); filter: brightness(1.08); }
+.boton:active { transform: scale(0.97); }
+
+.boton-lima  { padding: 16px 28px; font-size: 18px; background: var(--limon); color: var(--texto-oscuro); }
+.boton-borde { padding: 14px 28px; font-size: 18px; border: 2px solid #FFFFFF; color: #FFFFFF; }
+.boton-chico { padding: 12px 22px; font-size: 15px; }
+
+/* ---------- 3. Papel picado y encabezado ---------- */
+.papel {
+  display: flex;
+  gap: 6px;
+  height: 46px;
+}
+
+.papel span {
+  flex: 1;
+  transform-origin: top center;
+  /* Borde de abajo en zigzag, como el papel picado de verdad */
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 87% 100%, 75% 80%, 62% 100%, 50% 80%, 37% 100%, 25% 80%, 12% 100%, 0 80%);
+  animation: mecer 4s ease-in-out infinite;
+}
+
+/* Seis colores que se repiten */
+.papel span:nth-child(6n+1) { background: #E8457C; }
+.papel span:nth-child(6n+2) { background: #F59A23; }
+.papel span:nth-child(6n+3) { background: #1D9AA6; }
+.papel span:nth-child(6n+4) { background: #F5D33A; }
+.papel span:nth-child(6n+5) { background: #8E5BB8; }
+.papel span:nth-child(6n)   { background: #8ED12E; }
+
+/* Cada banderita arranca en un momento distinto para que no se muevan igual */
+.papel span:nth-child(odd) { animation-delay: -1.3s; }
+.papel span:nth-child(3n)  { animation-delay: -2.4s; }
+.papel span:nth-child(4n)  { animation-delay: -0.6s; }
+
+@keyframes mecer {
+  0%, 100% { transform: rotate(-2.5deg); }
+  50%      { transform: rotate(2.5deg); }
+}
+
+.encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding: 18px var(--lado);
+}
+
+.marca {
+  font-family: var(--fuente-titulo);
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+}
+
+.menu-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 32px;
+}
+
+.menu-nav a:not(.boton) {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+/* Subrayado que crece al pasar el cursor */
+.menu-nav a:not(.boton)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--limon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.menu-nav a:not(.boton):hover::after { transform: scaleX(1); }
+
+/* ---------- 4. Portada y banda ---------- */
+.portada {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px;
+  padding: 40px var(--lado) 80px;
+}
+
+.portada-texto {
+  flex: 1 1 440px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Los elementos de la portada suben uno tras otro al cargar */
+.portada-texto > * {
+  animation: subir 0.7s ease backwards;
+}
+.portada-texto > :nth-child(2) { animation-delay: 0.08s; }
+.portada-texto > :nth-child(3) { animation-delay: 0.16s; }
+.portada-texto > :nth-child(4) { animation-delay: 0.24s; }
+.portada-texto > :nth-child(5) { animation-delay: 0.32s; }
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.titulo-grande {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 88px);
+  line-height: 0.98;
+  color: #FFFFFF;
+  text-wrap: balance;
+}
+.resalte { color: var(--salmon); }
+
+.portada-descripcion {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 20px;
+  line-height: 1.55;
+  color: #FBE9E4;
+}
+
+.portada-datos {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--rosa-texto);
+}
+
+.portada-logo {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-circulo {
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--verde-azulado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-gata {
+  width: 96%;
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease;
+  /* Entra con un pequeño rebote al cargar la página */
+  animation: entrada-logo 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.logo-circulo:hover .logo-gata { transform: rotate(2deg) scale(1.03); }
+
+@keyframes entrada-logo {
+  from { opacity: 0; transform: scale(0.6) rotate(-14deg); }
+  to   { opacity: 1; transform: scale(1) rotate(-3deg); }
+}
+
+.banda {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 36px;
+  padding: 16px var(--margen);
+  background: var(--limon);
+  color: var(--texto-oscuro);
+  font-family: var(--fuente-titulo);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- 5. Menú ---------- */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 88px var(--lado);
+  background: var(--tinta);
+}
+
+.cabecera-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.menu .titulo-seccion { color: #FFFFFF; }
+
+/* Las tarjetas se acomodan solas: 3 por fila en pantalla grande, 1 en celular */
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 40px 28px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.foto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.foto img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.tarjeta:hover .foto img { transform: scale(1.06); }
+
+.precio {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--limon);
+  color: var(--texto-oscuro);
+  font-family: var(--fuente-titulo);
+  font-size: 17px;
+  transition: transform 0.3s ease;
+}
+.tarjeta:hover .precio { transform: rotate(-6deg) scale(1.08); }
+
+.tarjeta h3 {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 26px;
+  color: #FFFFFF;
+}
+
+.tarjeta p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #BBD6D9;
+}
+
+/* Aparecer al hacer scroll: script.js agrega la clase "visible" */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js .revelar.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 6. Nosotros ---------- */
+.nosotros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 56px;
+  padding: 96px var(--lado);
+  background: var(--rosa-claro);
+  color: #2A0C0F;
+}
+
+.nosotros-foto {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nosotros-foto img {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 10px solid #FFFFFF;
+  transform: rotate(-2deg);
+  transition: transform 0.4s ease;
+}
+.nosotros-foto img:hover { transform: rotate(0deg) scale(1.02); }
+
+.nosotros-texto {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.nosotros .titulo-seccion { color: #2A0C0F; }
+.nosotros-texto p:not(.etiqueta) {
+  margin: 0;
+  max-width: 56ch;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+/* ---------- 7. Visítanos y pie de página ---------- */
+.visitanos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 56px;
+  align-items: start;
+  padding: 88px var(--lado);
+  background: var(--rojo);
+}
+
+.visitanos-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.visitanos .titulo-seccion { color: #FFFFFF; }
+
+.visitanos dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.visitanos dt {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rosa-texto);
+}
+.visitanos dd {
+  margin: 4px 0 0;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #FFFFFF;
+}
+.visitanos dd a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.mapa {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  overflow: hidden;
+  border: 3px solid #FFFFFF;
+  border-radius: 6px;
+  background: #FFFFFF;
+}
+.mapa img {
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+.mapa:hover img { transform: scale(1.04); }
+.mapa span {
+  display: block;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--rojo);
+}
+
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px 40px;
+  padding: 36px var(--lado);
+  background: var(--rojo-profundo);
+  color: #E9C9C4;
+}
+.pie p { margin: 0; }
+.pie-marca {
+  margin-bottom: 6px;
+  font-family: var(--fuente-titulo);
+  font-size: 22px;
+  color: #FFFFFF;
+}
+.pie-aviso {
+  max-width: 52ch;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* ---------- 8. Celular ---------- */
+.barra-pedido { display: none; }
+
+@media (max-width: 700px) {
+  /* En celular la barra de abajo ya tiene el botón de WhatsApp */
+  .menu-nav .boton,
+  .menu-nav a[href="#nosotros"],
+  .menu-nav a[href="#visitanos"] { display: none; }
+
+  .barra-pedido {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--rojo-profundo);
+  }
+  .barra-pedido .boton {
+    display: block;
+    text-align: center;
+  }
+
+  /* Espacio extra para que la barra fija no tape el pie de página */
+  body { padding-bottom: 88px; }
+}
+
+/* ---------- 9. Movimiento reducido ----------
+   Si la persona activó "reducir movimiento" en su dispositivo,
+   se apagan todas las animaciones y todo se muestra de inmediato. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .js .revelar {
+    opacity: 1;
+    transform: none;
+  }
+}
